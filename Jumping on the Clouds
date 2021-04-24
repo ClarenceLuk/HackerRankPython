@@ -1,0 +1,46 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+#
+#
+# Complete the 'jumpingOnClouds' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY c as parameter.
+#https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
+
+def jumpingOnClouds(c):
+    # Write your code here
+    jumps=0
+    ccount=[]
+    num=0
+    ccount.append(0)
+    while(len(c)>1):
+        #print(c[0])
+        if len(c) >= 3 and c[2] == 0:
+            c.pop(0)
+            c.pop(0)
+            jumps+=1
+        elif len(c) > 1 and c[1] == 0:
+            c.pop(0)
+            jumps+=1
+        elif len(c) == 1:
+            c.pop(0)
+    return jumps
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    c = list(map(int, input().rstrip().split()))
+
+    result = jumpingOnClouds(c)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
