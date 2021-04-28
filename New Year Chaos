@@ -15,9 +15,11 @@ def minimumBribes(q):
     # Write your code here
     bribes=0 #total number of bribes
     for i in range(len(q)):
-        if (q[i] - (i+1)) > 2: #end loop if the current number moved up more than 3 times
+        #print(i+1, ": ", q[i])
+        if (q[i] - (i+1)) > 2: #if the current number moved up more than 3 times, then print and end the loop.
             print("Too chaotic")
             return
+        #if (i+1) > q[i]: #if the current number is lower than it should me, check how many numbers from its original location to its current location -1 is higher than it. **Needs Fixing** **Error is in the logic**?
         for j in range(q[i]-2 if (q[i]-2)>=0 else q[i]-1, i):
             #print(j)
             if q[j] > q[i]:
