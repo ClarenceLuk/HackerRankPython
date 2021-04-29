@@ -1,0 +1,33 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the minimumSwaps function below.
+# https://www.hackerrank.com/challenges/minimum-swaps-2/problem?h_l=interview&playlist_slugs%5B%5D%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D%5B%5D=arrays&isFullScreen=true
+def minimumSwaps(arr):
+    temp=None
+    count=0
+    pos=0
+    while pos != len(arr):
+        if pos == len(arr)-1:
+            return str(count)
+            break
+        elif pos+1 == arr[pos]:
+            pos+=1
+            #print("if")
+        elif pos+1 != arr[pos]:
+            temp = arr[arr[pos]-1]
+            arr[arr[pos]-1] = arr[pos]
+            arr[pos] = temp
+            count+=1
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    n = int(input())
+    arr = list(map(int, input().rstrip().split()))
+    res = minimumSwaps(arr)
+    fptr.write(str(res) + '\n')
+    fptr.close()
