@@ -1,0 +1,36 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the arrayManipulation function below.
+# https://www.hackerrank.com/challenges/crush/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays
+def arrayManipulation(n, queries):
+    arr=[0]*(n+1)
+    high=0
+    current=0
+    #print(queries)
+    #print(n)
+    for j in range(len(queries)):
+        arr[queries[j][0]-1]+=queries[j][2]
+        arr[queries[j][1]]+=-queries[j][2]
+    for i in range(len(arr)):
+        current+=arr[i]
+        if current > high:
+            high = current
+    #print("arr: ", arr)
+    return high
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    nm = input().split()
+    n = int(nm[0])
+    m = int(nm[1])
+    queries = []
+    for _ in range(m):
+        queries.append(list(map(int, input().rstrip().split())))
+    result = arrayManipulation(n, queries)
+    fptr.write(str(result) + '\n')
+    fptr.close()
